@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import cl.banco.ms.Empleados.dto.EmpleadoDTO;
 import cl.banco.ms.Empleados.model.Empleado;
 import cl.banco.ms.Empleados.service.EmpleadoService;
 
@@ -19,6 +20,12 @@ public class EmpleadoController {
     @GetMapping
     public List<Empleado> listar() {
         return service.listar();
+    }
+
+    // LISTAR DTO
+    @GetMapping("/dto")
+    public List<EmpleadoDTO> listarDTO() {
+        return service.listarDTO();
     }
 
     // BUSCAR POR ID

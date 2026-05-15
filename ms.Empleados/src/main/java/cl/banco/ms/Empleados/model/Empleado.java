@@ -1,11 +1,6 @@
 package cl.banco.ms.Empleados.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "empleados")
@@ -33,17 +28,27 @@ public class Empleado {
     @Column(nullable = false)
     private String sucursal;
 
+    // AREA DEL EMPLEADO
+    // EJ: Creditos, Seguros, Inversiones
     @Column(nullable = false)
-    private String especialidad;
+    private String area;
 
+    // DISPONIBILIDAD
     private Boolean disponible;
 
     public Empleado() {
     }
 
-    public Empleado(Integer id, String rut, String nombre, String apellido,
-                     String correo, String cargo, String sucursal,
-                     String especialidad, Boolean disponible) {
+    public Empleado(Integer id,
+                     String rut,
+                     String nombre,
+                     String apellido,
+                     String correo,
+                     String cargo,
+                     String sucursal,
+                     String area,
+                     Boolean disponible) {
+
         this.id = id;
         this.rut = rut;
         this.nombre = nombre;
@@ -51,9 +56,8 @@ public class Empleado {
         this.correo = correo;
         this.cargo = cargo;
         this.sucursal = sucursal;
-        this.especialidad = especialidad;
+        this.area = area;
         this.disponible = disponible;
-
     }
 
     public Integer getId() {
@@ -75,7 +79,8 @@ public class Empleado {
     public String getNombre() {
         return nombre;
     }
-     public void setNombre(String nombre) {
+
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
@@ -94,6 +99,7 @@ public class Empleado {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+
     public String getCargo() {
         return cargo;
     }
@@ -109,12 +115,13 @@ public class Empleado {
     public void setSucursal(String sucursal) {
         this.sucursal = sucursal;
     }
-    public String getEspecialidad() {
-        return especialidad;
+
+    public String getArea() {
+        return area;
     }
 
-    public void setEspecialidad(String especialidad) {
-        this.especialidad = especialidad;
+    public void setArea(String area) {
+        this.area = area;
     }
 
     public Boolean getDisponible() {

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cl.banco.ms.Empleados.dto.EmpleadoDTO;
 import cl.banco.ms.Empleados.model.Empleado;
 import cl.banco.ms.Empleados.repository.EmpleadoRepository;
 
@@ -17,6 +18,18 @@ public class EmpleadoService {
     // LISTAR
     public List<Empleado> listar() {
         return repository.findAll();
+    }
+
+    // LISTAR DTO
+    public List<EmpleadoDTO> listarDTO() {
+
+        return repository.findAll().stream().map(empleado ->
+            new EmpleadoDTO(
+                empleado.getNombre(),
+                empleado.getApellido(),
+                empleado.getArea()
+            )
+        ).toList();
     }
 
     // BUSCAR POR ID
@@ -47,7 +60,7 @@ public class EmpleadoService {
             empleado.setCorreo(empleadoActualizado.getCorreo());
             empleado.setCargo(empleadoActualizado.getCargo());
             empleado.setSucursal(empleadoActualizado.getSucursal());
-            empleado.setEspecialidad(empleadoActualizado.getEspecialidad());
+            empleado.setArea(empleadoActualizado.getArea());
             empleado.setDisponible(empleadoActualizado.getDisponible());
 
             return repository.save(empleado);
