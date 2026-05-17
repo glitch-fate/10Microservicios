@@ -17,14 +17,19 @@ public class DataLoader {
     @Bean
     CommandLineRunner initData(ClienteRepository repoCliente, ContactoRepository repoContacto, DireccionRepository repoDireccion){
         return args -> {
-                Cliente cliente1 = new Cliente(null, "16145789-6", "Nicolas", "Vazques",
-                 null, null, null, null);
+            if(repoCliente.count() > 0){
+                System.out.println("Ya existen datos en la base de datos (Clientes)");
+            }else{
+                Cliente cliente1 = new Cliente(null, "16145789-6", "Nicolas", "Vasquez",
+                 "lecoquetenico@gmail.com", "Preferente", null, null);
 
 
-                 Contacto contacto1 = new Contacto(null, "945236954", "lecoquetenico@gmail.com", cliente1);
+                 Contacto contacto1 = new Contacto(null, "945236954", cliente1);
 
                 
                  Direccion direccion1 = new Direccion(null, "Jose antonio matta", "Quilicura", "Santiago", cliente1);
+
+                 
 
 
                  cliente1.setContacto(contacto1);
@@ -37,6 +42,7 @@ public class DataLoader {
                  repoDireccion.save(direccion1);
 
                  System.out.println("Datos de Clientes cargados con exito");
+            }
                  //prueba1
         
     };

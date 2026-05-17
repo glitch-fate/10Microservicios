@@ -40,6 +40,7 @@ public class Cliente {
     @Column(nullable = false)
     private String tipoCliente;
 
+    //relaciones 
     @OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL)
     @JsonManagedReference
     private Direccion direccion;

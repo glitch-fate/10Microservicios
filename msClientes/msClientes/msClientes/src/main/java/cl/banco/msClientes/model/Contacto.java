@@ -2,6 +2,7 @@ package cl.banco.msClientes.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,8 +25,10 @@ public class Contacto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(nullable = false)
     private String telefono;
-    private String correoAlternativo;
+
+    
 
     @OneToOne
     @JoinColumn(name = "cliente_id")
